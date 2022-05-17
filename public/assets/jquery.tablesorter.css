@@ -1,0 +1,89 @@
+/* css for table sorter class */
+.tableframebody {
+    overflow: auto;
+}
+table.tablesorter {
+    text-align: left;
+	border-spacing: 0px;
+	margin-right: 0px;
+	color: #6200c0;
+	width: 100%; 
+	border-collapse: collapse; 
+	background-color: #C6bcdb;  
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {	
+    border-left: 1px solid #C6bcdb;	
+    border-right: 1px solid #C6bcdb;	
+    border-bottom: 1px solid #C6bcdb;
+	background-color: #C6bcdb;
+	padding-right: 10px;
+	padding-left: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-weight: normal;
+	text-align:left;
+	color: #000000;	  
+}
+table.tablesorter thead tr th:first-child, table.tablesorter tfoot tr th:first-child {	
+    border-left: none;
+}
+table.tablesorter thead tr .header {
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+	height:25px;
+	text-align:center;
+}
+table.tablesorter thead tr .headerNoSort {
+	background-repeat: no-repeat;
+	background-position: center right;
+	height:25px;
+	text-align:center;
+}
+table.tablesorter tbody td {	
+	background-color: #FFF;
+	vertical-align: middle;
+	height:20px;
+    border-left: 1px solid #C6bcdb;
+    padding-left: 0.3cm;
+    padding-right: 0.3cm;
+}
+table.tablesorter tbody td:first-child
+{
+	border-left: none;
+}
+table.tablesorter tbody td.title {	
+	background-color: #FFF;
+	vertical-align: middle;
+	height:20px;
+    border-left: 0px;
+    border-bottom: 1px solid #C6bcdb;
+    border-top: 1px solid #C6bcdb;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(images/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(images/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #6200c0;
+    color: #FFFFFF;
+}
+table.tablesorter tbody tr td.edited
+{
+    background-image: url("images/triangle.gif");
+    background-repeat:no-repeat;
+    background-position:top left;
+}
+table.tablesorter tbody tr.active td {   
+  background-color: #FFFF99;
+}
+table.tablesorter tbody tr.deleted td, table.tablesorter tbody tr.deleted td a {   
+  background-color: #CBCBCB;
+  color:#9A9A9A;
+  text-decoration:none;
+}

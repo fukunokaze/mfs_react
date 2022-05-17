@@ -1,0 +1,89 @@
+/*
+ * @(#) $Header: /cvsrepos/kmsv30/kmsv30/src/web/style/jquery/calendar/diary-dialog.css,v 1.1 2009/11/03 06:46:29 irfanr Exp $
+ *
+ * diary-dialog.css
+ *
+ * Copyright (c) 2009, PT. Mitrais, Kuta, Bali, Indonesia
+ * All rights reserved.
+ */
+ 
+h1,h2,h3,h4,h5 {
+    color: #6200C0;
+    font-family:Verdana;
+    border-bottom:1px solid #6200C0;
+}
+
+.diary-button {
+    font-family:Verdana;
+    padding: 0.2em 0.6em 0.3em;
+}
+
+#list-header {
+    background-color:#C6BCDB;
+    clear:right;
+    height: 20px;
+    border:1px solid #AAAAAA;
+/*    width: 424px;*/
+}
+#selectable {margin: 0; padding: 0; width: 100%; }
+
+#select-result ,#selectable tr .task-id{
+    display:none;
+}
+
+
+table#selectabletable {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAAAAA;
+	border-collapse: collapse;
+}
+table#selectabletable th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: #AAAAAA;
+	background-color: green;
+	text-align:left;
+	font-weight:normal;
+	background-color:#C6BCDB;
+    clear: right;
+    height: 20px;
+}
+table#selectabletable td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: #AAAAAA;
+}
+table tbody#selectableRow .ui-selected td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: #AAAAAA;
+	background: #F39814; 
+	color: white;
+}
+table tbody#selectableRow .ui-selecting td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: #AAAAAA;
+	background: #FECA40; 
+	color: white;
+}
+
+table#selectabletable .subject
+{
+	width:68%;
+}
+table#selectabletable .due-time
+{
+	width:30%;
+}
+table#selectabletable .task-id
+{
+	display:none;
+}
+
+

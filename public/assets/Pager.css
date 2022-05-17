@@ -1,0 +1,33 @@
+﻿#pager ul.pages {
+display:block;
+border:none;
+text-transform:lowercase;
+font: 10px Verdana;
+margin:10px 0 10px;
+padding:0;
+}
+
+#pager ul.pages li {
+list-style:none;
+float:left;
+border:1px solid #ccc;
+text-decoration:none;
+margin:0 5px 0 0;
+padding:5px;
+}
+
+#pager ul.pages li:hover {
+border:1px solid #6200c0;
+}
+
+#pager ul.pages li.pgEmpty {
+border:1px solid #eee;
+color:#666666;
+}
+
+#pager ul.pages li.pgCurrent {
+border:1px solid #666666;
+color:#000;
+font-weight:700;
+background-color:#c1b4d0;
+}

@@ -1,0 +1,42 @@
+.day-calendar-header td {
+	background: url(../../images/header-bg.png) repeat-x;
+}
+
+#jq_day_calendar {
+    width: 100%;
+    align: center;
+    margin: 0 auto;
+}
+
+#message {
+    font-size: 0.7em;
+    position: absolute;
+    top: 0.5em;
+    right: 370px;
+    padding: 1em;
+    background: #ddf;
+    border: 1px solid #aad;
+    width: 270px;
+    display: none;
+}
+
+.conference-event, .contest-event, .exam-event, .meeting-event {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.conference-event {
+    background-image: url(../../images/events/50/conference.png);
+}
+
+.contest-event {
+    background-image: url(../../images/events/50/contest.png);
+}
+
+.exam-event {
+    background-image: url(../../images/events/50/exam.png);
+}
+
+.meeting-event {
+    background-image: url(../../images/events/50/meeting.png);
+}

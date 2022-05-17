@@ -1,0 +1,28 @@
+﻿/*
+ * @(#) $Header: /cvsrepos/kmsv30/kmsv30/src/web/style/jquery/calendar/diary-dialog.css,v 1.1 2009/11/03 06:46:29 irfanr Exp $
+ *
+ * diaryDailyAgenda.css
+ *
+ * Copyright (c) 2009, PT. Mitrais, Kuta, Bali, Indonesia
+ * All rights reserved.
+ */
+ 
+h1 {
+	padding: 0.5em;
+	font-size: 1.6em;
+} 
+
+#buttonArea
+{
+    margin: 10px 0px 0px 5px;        
+}
+
+#diaryContainer
+{
+    padding: 10px 10px 10px 10px;        
+}
+
+#inlineCal
+{
+    margin: 5px 10px 0px 10px;        
+}

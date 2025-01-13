@@ -1,11 +1,12 @@
 'use client'
 import { useSelector, useDispatch } from "react-redux";
 import { redirect } from 'next/navigation'
-
+import { useAppSelector } from '../../app/hooks';
 // import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import Label from "../../components/Label";
 import { authAction } from "../../store/auth";
+import axios from "axios";
 
 export function Login() {
     const [message, setMessage] = useState("");
@@ -15,13 +16,13 @@ export function Login() {
 
     const dispatch = useDispatch();
 
-    const isAuth = useSelector((state) => state.auth.isAuthenticated);
+    const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
 
-    function usernameOnChange(e) {
+    function usernameOnChange(e: React.ChangeEvent<HTMLInputElement>) {
         setUserName(e.target.value);
     }
 
-    function passwordOnChange(e) {
+    function passwordOnChange(e: React.ChangeEvent<HTMLInputElement>) {
         setPassword(e.target.value);
     }
 
@@ -41,13 +42,30 @@ export function Login() {
     //     }`;
 
     // const [authenticate] = useMutation(AUTHENTICATE);
+    const testUrl = '';
 
-    function onSubmitHandler(e) {
+    function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        dispatch(authAction.login());
-        redirect('/');
 
-        // authenticate({variables: {username: username, password: password}});
+        if (username == "admin" && password == "password") {
+            dispatch(authAction.login());
+            redirect('/');
+        };
+
+        // axios.post(testUrl, {
+        //     username: username,
+        //     password: password,
+        // },
+        //     {
+        //         headers: {
+        //             "Access-Control-Allow-Origin": "*",
+        //         }
+        //     }).then((response) => {
+        //         if (response.status == 200) {
+        //             dispatch(authAction.login());
+        //             redirect('/');
+        //         }
+        //     });
     }
 
     return (

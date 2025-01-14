@@ -26,7 +26,7 @@ body
 	scrollbar-arrow-color: #ffffff;
 	scrollbar-track-color: #ead9ff;
 	scrollbar-darkshadow-color: #8825e7;
-	background-image: url("./assets/Images/bg.gif");
+	background-image: url("../../public/assets/Images/bg.gif");
 }
 
 textarea
@@ -102,7 +102,7 @@ ul
 	scrollbar-arrow-color: #ffffff;
 	scrollbar-track-color: #ead9ff;
 	scrollbar-darkshadow-color: #8825e7;
-	background-image: url('Images/bg.gif');
+	background-image: url('../../public/assets/Images/bg.gif');
 }
 
 /* Basic MMS CSS */
@@ -639,7 +639,7 @@ ul.menu ul ul
 }
 ul.menu .sub
 {
-	background-image: url(Images/mini_right.gif);
+	background-image: url("../../public/assets/Images/mini_right.gif");
 	background-position: 98% 50%;
 	background-repeat: no-repeat;
 }
@@ -923,7 +923,7 @@ ul.menu .topline
 {
 	padding: 3px 0px 3px 0px;
 	position: relative;
-	background: url(Images/userinfo.png);
+	background: url("../../public/assets/Images/userinfo.png");
 	z-index: 98;
 	height: auto;
 	width: 50%;

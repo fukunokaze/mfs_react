@@ -70,7 +70,6 @@ export function Login() {
 
     return (
         <div id='logincontainer'>
-
             <div className="contentwrap">
                 <h1>
                     <img src="../assets/Images/00_login_page_top_mms.gif" alt="MMS Finance" />

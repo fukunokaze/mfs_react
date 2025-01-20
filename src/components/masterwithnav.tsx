@@ -1,7 +1,6 @@
 'use client'
 
 import React, { ReactElement, useState } from 'react';
-import Nav from './nav';
 
 interface MasterContainerProp extends React.PropsWithChildren {
     name: '',
@@ -19,7 +18,6 @@ const MasterWithNav: React.FC<MasterContainerProp> = (master) => {
 
     return (
         <div className="w-1/3 p-4 border-r border-gray-300">
-            <Nav></Nav>
             <div className="w-2/3 p-4">
                 {master.children}
             </div>

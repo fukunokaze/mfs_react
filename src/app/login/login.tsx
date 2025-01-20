@@ -1,72 +1,12 @@
-'use client'
-import { useSelector, useDispatch } from "react-redux";
-import { redirect } from 'next/navigation'
-import { useAppSelector } from '../../app/hooks';
 // import { gql, useMutation } from "@apollo/client";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Label from "../../components/Label";
-import { authAction } from "../../store/auth";
-import axios from "axios";
+// import { signIn } from "@/auth";
+import { redirect } from "next/navigation"
+import { signIn, auth, providerMap } from "@/auth"
+import { AuthError } from "next-auth"
 
 export function Login() {
-    const [message, setMessage] = useState("");
-    const [username, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-
-
-    const dispatch = useDispatch();
-
-    const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
-
-    function usernameOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setUserName(e.target.value);
-    }
-
-    function passwordOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setPassword(e.target.value);
-    }
-
-    // const query = gql`
-    //     mutation{
-    //         authenticate(input:{
-    //             username:"arga", password:"password"
-    //         }){id, name}
-    //     }`;
-
-    // const AUTHENTICATE = gql`
-    //     mutation Authenticate ($username: String!, $password: String!){
-    //         authenticate(username: $username, password: $password){
-    //             id
-    //             name                
-    //         }
-    //     }`;
-
-    // const [authenticate] = useMutation(AUTHENTICATE);
-    const testUrl = '';
-
-    function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-
-        if (username == "admin" && password == "password") {
-            dispatch(authAction.login());
-            redirect('/');
-        };
-
-        // axios.post(testUrl, {
-        //     username: username,
-        //     password: password,
-        // },
-        //     {
-        //         headers: {
-        //             "Access-Control-Allow-Origin": "*",
-        //         }
-        //     }).then((response) => {
-        //         if (response.status == 200) {
-        //             dispatch(authAction.login());
-        //             redirect('/');
-        //         }
-        //     });
-    }
 
     return (
         <div id='logincontainer'>
@@ -79,12 +19,23 @@ export function Login() {
                 </div>
 
                 <div className="column">
-                    <form onSubmit={onSubmitHandler}>
+                    <form action={async (formdata) => {
+                        "use server"
+                        try {
+                            await signIn("credentials", formdata);
+                        } catch (error) {
+                            if (error instanceof AuthError) {
+                                console.log("login error");
+                            }
+                            throw error
+                        }
+                        // await signIn("credentials", formdata)
+                    }}>
                         Forgot your password? click here
                         <div className="information">
                             {/* <%=MessageFactory.GetMessage("MFSSec0007", MessageType.Information).Value %>, 
                 <%=Html.ActionLink(MessageFactory.GetMessage("MFS0078", MessageType.Information).Value, "RequestChangePassword","ChangePassword")%>                     */}
-                            <Label Text={message} />
+                            <Label />
                         </div>
                         <p></p>
                         <table cellSpacing="0.5px">
@@ -92,11 +43,11 @@ export function Login() {
 
                                 <tr>
                                     <td><Label Text="Username" /></td>
-                                    <td><input id="username" type="text" onChange={usernameOnChange} value={username}></input></td>
+                                    <td><input name="username" id="username" type="text" ></input></td>
                                 </tr>
                                 <tr>
                                     <td><Label Text="Password" /></td>
-                                    <td><input id="password" type="password" onChange={passwordOnChange} value={password}></input></td>
+                                    <td><input name="password" id="password" type="password" ></input></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -119,9 +70,7 @@ export function Login() {
                 </div>
             </div>
         </div>
-
     );
-
 }
 
 export default Login;

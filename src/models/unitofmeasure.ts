@@ -1,14 +1,14 @@
 
 interface UnitOfMeasureModel {
-    UomId: string,
-    UnitCode: string,
-    UomCategory: string,
-    UomDescription: string,
-    UomName: string,
-    UomType: string,
-    Symbol: string,
-    Status: string,
-    AllowDecimal: boolean,
+    uomId: string,
+    unitCode: string,
+    uomCategory: string,
+    uomDescription: string,
+    uomName: string,
+    uomType: string,
+    symbol: string,
+    status: string,
+    allowDecimal: boolean,
 };
 
 export default UnitOfMeasureModel;

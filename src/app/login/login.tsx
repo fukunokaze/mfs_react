@@ -3,8 +3,10 @@
 import Label from "../../components/Label";
 // import { signIn } from "@/auth";
 import { redirect } from "next/navigation"
-import { signIn, auth, providerMap } from "@/auth"
+import { signIn } from "@/auth"
 import { AuthError } from "next-auth"
+
+let isError: boolean = false;
 
 export function Login() {
 
@@ -21,15 +23,23 @@ export function Login() {
                 <div className="column">
                     <form action={async (formdata) => {
                         "use server"
+                        let id: boolean = false;
                         try {
-                            await signIn("credentials", formdata);
+                            const respo = await signIn("credentials", {
+                                username: formdata.get("username"),
+                                password: formdata.get("password"),
+                                redirect: false,
+                            });
                         } catch (error) {
-                            if (error instanceof AuthError) {
-                                console.log("login error");
-                            }
-                            throw error
+                            console.log(error);
+                            redirect('/error');
+                        } finally {
+                            redirect('/');
+
+                            // if (id) {
+                            //     redirect('/');
+                            // }
                         }
-                        // await signIn("credentials", formdata)
                     }}>
                         Forgot your password? click here
                         <div className="information">
@@ -61,6 +71,12 @@ export function Login() {
                                     <td></td>
                                     <td><input type="image" value="Login" src="../assets/Images/login.jpg" style={{ width: 71, height: 21 }} alt="login" /></td>
                                 </tr>
+                                {isError && (<tr>
+                                    <td></td>
+                                    <td>Invalid Credential</td>
+                                </tr>)
+                                }
+
                             </tbody>
                         </table>
                     </form>

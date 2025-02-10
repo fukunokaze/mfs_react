@@ -1,8 +1,6 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { authAction } from "@/store/auth";
 
-interface UserCredential {
+export type UserCredential = {
     username: string,
     password: string,
 };
@@ -11,11 +9,15 @@ interface AuthResponse {
     token: string,
 }
 
-const authUserUrl: string = "";
+const authUserUrl: string = "http://localhost:5212/api/Login";
 
-export const authenticateUser = (cred: UserCredential) => {
+export function test() {
 
-    axios.post(authUserUrl, {
+}
+export async function authenticateUser(cred: UserCredential): Promise<AuthResponse> {
+    let userToken: string = "";
+
+    await axios.post(authUserUrl, {
         username: cred.username,
         password: cred.password,
     },
@@ -24,17 +26,19 @@ export const authenticateUser = (cred: UserCredential) => {
                 "Access-Control-Allow-Origin": "*",
             }
         }).then((response) => {
+
             if (response.status == 200) {
-                // dispatch(authAction.login());
-                // redirect('/');
+                userToken = response.data;
+                return {
+                    token: response.data,
+                }
             }
         });
-    return {
-        token: "asdasd123123",
-    }
+
+    return { token: userToken } as AuthResponse;
 };
 
-export const authenticateUserFake = () => {
+export const authenticateUserFake = (cred: UserCredential) => {
     // const dispatch = useDispatch();
     // dispatch(authAction.login());
     return {

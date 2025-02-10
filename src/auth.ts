@@ -1,39 +1,59 @@
 import NextAuth, { User } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-// import { authenticateUserFake } from "@/services/loginService";
 import type { Provider } from "next-auth/providers"
+import { authenticateUserFake, authenticateUser, UserCredential } from "./services/loginService"
 
 const providers: Provider[] = [
   Credentials({
-    credentials: { password: { label: "Password", type: "password" } },
-    authorize(c) {
-      if (c.password !== "password") return null
-      return {
-        id: "test",
-        name: "Test User",
-        email: "test@example.com",
+    credentials: { username: { label: "Username", type: "username" }, password: { label: "Password", type: "password" } },
+    async authorize(c) {
+      const cred: UserCredential = { password: c.password, username: c.username } as UserCredential;
+      console.log(cred);
+      try {
+        let response = await authenticateUser(cred);
+        if (response.token == "") throw new Error("Invalid credentials.")
+        return {
+          id: "test",
+          name: "Test User",
+          email: "test@example.com",
+        }
+      } catch (e) {
+        console.log(e);
+        return null;
       }
     },
   }),
 ]
 
-export const providerMap = providers
-  .map((provider) => {
-    if (typeof provider === "function") {
-      const providerData = provider()
-      return { id: providerData.id, name: providerData.name }
-    } else {
-      return { id: provider.id, name: provider.name }
-    }
-  })
-  .filter((provider) => provider.id !== "credentials")
+// export const providerMap = providers
+//   .map((provider) => {
+//     if (typeof provider === "function") {
+//       const providerData = provider()
+//       return { id: providerData.id, name: providerData.name }
+//     } else {
+//       return { id: provider.id, name: provider.name }
+//     }
+//   })
+//   .filter((provider) => provider.id !== "credentials")
 
-  export const { handlers, auth, signIn, signOut } = NextAuth({
-    providers,
-    pages: {
-      signIn: "/login",
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers,
+  pages: {
+    signIn: "/login",
+  },
+  debug: true,
+  logger: {
+    error(code, ...message) {
+      console.log(code, message)
     },
-  })
+    warn(code, ...message) {
+      console.log(code, message)
+    },
+    debug(code, ...message) {
+      console.log(code, message)
+    },
+  },
+})
 // export const { handlers, signIn, signOut, auth } = NextAuth({
 //   providers: [
 //     Credentials({

@@ -1,29 +1,36 @@
 'use client'
 
 import Label from '@/components/Label';
+import UnitOfMeasureModel from '@/models/unitofmeasure';
 import React, { FormEvent } from 'react';
-
-
+import { CreateUOM } from "@/services/unitofmeasureservice"
 
 export default function UnitOfMeasure() {
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
+        const formData = new FormData(event.currentTarget);
 
-        const formData = new FormData(event.currentTarget)
-        const response = await fetch('https://localhost:44341/api/InvUnitOfMeasure', {
-            method: 'POST',
-            body: formData,
-        })
+        let uomCreate: UnitOfMeasureModel = {
+            allowDecimal: false,
+            status: formData.get("Status")?.toString() ?? "",
+            symbol: formData.get("Symbol")?.toString() ?? "",
+            unitCode: formData.get("UnitCode")?.toString() ?? "",
+            uomCategory: formData.get("UomCategory")?.toString() ?? "",
+            uomDescription: formData.get("UomDescription")?.toString() ?? "",
+            uomId: "",
+            uomName: formData.get("UomName")?.toString() ?? "",
+            uomType: formData.get("UomType")?.toString() ?? "",
+        };
 
-        // Handle response if necessary
-        const data = await response.json()
-        // ...
+        let response = await CreateUOM(uomCreate);
+
+        alert(response.IsError);
     }
 
     return (
         <div>
             <div className="max-w-md mx-auto mt-10">
-                <form className="space-y-6">
+                <form onSubmit={onSubmit} className="space-y-6">
                     <div className="flex items-center">
                         <label className="w-1/3 text-right pr-4" htmlFor="UnitCode">
                             Unit Code:

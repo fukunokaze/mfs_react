@@ -21,7 +21,7 @@ export default async function RootLayout({ children }: Readonly<{
           <div id="root">
             <div className="container mx-auto flex flex-row h-screen p-4">
               <Nav isAuth={session != null}></Nav>
-              <div className="w-2/3 p-4">
+              <div className="w-2/3 p-4 content">
                 {children}
               </div>
             </div>

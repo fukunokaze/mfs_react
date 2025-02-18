@@ -14,7 +14,7 @@ const Nav: React.FC<NavProp> = (props) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
-    const data: number[] = [1, 2, 3];
+    const data: string[] = ["Accounting", "Purchasing", "Supplier"];
 
     // const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
 
@@ -22,13 +22,13 @@ const Nav: React.FC<NavProp> = (props) => {
         return (
             <div className="w-1/3 p-4 border-r border-gray-300">
                 <h2 className="text-lg font-semibold">Navigation</h2>
-                {data.map((_, index) => (
+                {data.map((val, index) => (
                     <div key={index} className="py-2">
                         <button
                             className="w-full text-left py-2 px-4 bg-gray-100 hover:bg-gray-200 rounded-lg focus:outline-none"
                             onClick={() => toggleAccordion(index)}
                         >
-                            Section {index + 1}
+                            {val}
                         </button>
                         {activeIndex === index && (
                             <div className="p-4 border-l-4 border-blue-500 bg-gray-50 mt-1 rounded-lg">
@@ -46,6 +46,9 @@ const Nav: React.FC<NavProp> = (props) => {
                     {activeIndex === 4 && (
                         <div className="p-4 border-l-4 border-blue-500 bg-gray-50 mt-1 rounded-lg">
                             <Link href="/inventory/unitofmeasure">Unit Of Measure</Link>
+                            <div className="ml-4 mt-2 border-l border-gray-600">
+                                <Link href="/inventory/unitofmeasure/lookup">Lookup</Link>
+                            </div>
                         </div>
                     )}
                 </div>

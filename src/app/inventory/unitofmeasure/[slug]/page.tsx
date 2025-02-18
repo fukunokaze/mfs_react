@@ -1,14 +1,16 @@
-'use client'
-
-import Label from '@/components/Label';
 import UnitOfMeasureModel from '@/models/unitofmeasure';
 import React, { FormEvent } from 'react';
-import { CreateUOM } from "@/services/unitofmeasureservice"
-import UnitOfMeasure from '../page';
+import { CreateUOM, GetUom, UpdateUom } from "@/services/unitofmeasureservice"
+import UomMaintainPage from "../maintain";
 
-export default function UnitOfMeasurePage() {
-   
+interface BlogPostProps {
+    params: { slug: string };
+}
+export default async function UnitOfMeasure({ params }: BlogPostProps) {
+    let parameter = await params;
+    let uomData = await GetUom(parameter.slug as string);
+    
     return (
-       <UnitOfMeasure></UnitOfMeasure>
+        <UomMaintainPage data={uomData}></UomMaintainPage>
     );
 }

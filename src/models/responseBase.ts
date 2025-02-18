@@ -1,8 +1,8 @@
 
 interface APIResponse<T> {
-    Message: string,
-    IsError: boolean,
-    Payload?: T
+    message: string,
+    isError: boolean,
+    payload: T
 };
 
 export default APIResponse;

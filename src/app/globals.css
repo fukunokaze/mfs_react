@@ -29,6 +29,10 @@ body
 	background-image: url("../../public/assets/Images/bg.gif");
 }
 
+.content{
+	overflow: auto;
+}
+
 textarea
 {
 	font: 11px Verdana;

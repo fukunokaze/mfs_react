@@ -92,7 +92,7 @@ npm run type-check
 - **Next.js 16.1.6**: Updated to the latest Next.js version
 - **NextAuth v5**: Upgraded from v4 to v5.0.0-beta.30 to match code patterns
 - **ESLint 9**: Updated to ESLint 9.39.2 with flat config format for security fixes
-- **Linting**: Changed from `next lint` to `eslint src` (Next.js 16 removed built-in lint command)
+- **Linting**: Changed to use ESLint 9 flat config directly instead of legacy `.eslintrc.json` format
 
 ### Known Warnings
 - **Middleware deprecation**: Next.js 16 shows a warning about using "proxy" instead of "middleware". This is not breaking and the middleware still works correctly. The migration to the new proxy pattern will be done in a future update.

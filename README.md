@@ -1,6 +1,6 @@
 # MFS - Mitrais Financial System
 
-A modern financial management system built with Next.js 15, React 19, and TypeScript.
+A modern financial management system built with Next.js 16, React 19, and TypeScript.
 
 ## Features
 
@@ -13,13 +13,14 @@ A modern financial management system built with Next.js 15, React 19, and TypeSc
 
 ## Tech Stack
 
-- **Framework**: Next.js 15.1.4
-- **UI Library**: React 19.0.0
-- **Styling**: TailwindCSS 3.4.17
-- **Authentication**: NextAuth 5.0.0-beta.25
-- **State Management**: Redux Toolkit 2.5.0
-- **API Client**: Axios 1.7.9, Apollo Client 3.12.5
-- **Language**: TypeScript 5.7.3
+- **Framework**: Next.js 16.1.6
+- **UI Library**: React 19.2.4
+- **Styling**: TailwindCSS 4.1.11
+- **Authentication**: NextAuth 5.0.0-beta.30
+- **State Management**: Redux Toolkit 2.11.2
+- **API Client**: Axios 1.11.0, Apollo Client 3.14.0
+- **Language**: TypeScript 5.9.2
+- **Linting**: ESLint 9.39.2 with flat config
 
 ## Getting Started
 
@@ -84,6 +85,22 @@ Run TypeScript type checking:
 ```bash
 npm run type-check
 ```
+
+## Recent Updates (Next.js 16)
+
+### What's Changed
+- **Next.js 16.1.6**: Updated to the latest Next.js version
+- **NextAuth v5**: Upgraded from v4 to v5.0.0-beta.30 to match code patterns
+- **ESLint 9**: Updated to ESLint 9.39.2 with flat config format for security fixes
+- **Linting**: Changed from `next lint` to `eslint src` (Next.js 16 removed built-in lint command)
+
+### Known Warnings
+- **Middleware deprecation**: Next.js 16 shows a warning about using "proxy" instead of "middleware". This is not breaking and the middleware still works correctly. The migration to the new proxy pattern will be done in a future update.
+
+### Breaking Changes Fixed
+- Fixed NextAuth session callback to properly use JWT token properties
+- Added middleware matcher configuration for proper route protection
+- Migrated ESLint configuration from `.eslintrc.json` to `eslint.config.mjs` (flat config)
 
 ## Project Structure
 

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "target": "es5",
     "lib": [
       "dom",
@@ -14,7 +14,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -22,7 +22,7 @@
     "plugins": [
       {
         "name": "next"
-      },
+      }
     ],
     "paths": {
       "@/*": [
@@ -35,7 +35,10 @@
     "**/*.tsx",
     "next-env.d.ts",
     "./build/types/**/*.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "build/types/**/*.ts",
+    "build/dev/types/**/*.ts",
+    "./build/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

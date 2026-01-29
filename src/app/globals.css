@@ -240,13 +240,13 @@ a.visited
 	text-decoration: none;
 }
 
-a:link:unknown, a:visited:unknown
+a:link, a:visited
 {
 	color: #6200c0;
 	text-decoration: none;
 }
 
-A:hover:unknown
+A:hover
 {
 	color: #000000;
 	text-decoration: none;

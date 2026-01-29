@@ -46,13 +46,15 @@ export async function LookupUOM(): Promise<UnitOfMeasureModel[]> {
 
   const session = await getServerSession(auth);
 
+  console.log("session token: " + session);
+  
   let resp: UnitOfMeasureModel[] = [];
   console.log(JSON.stringify(session, null, 2));
   await axios
     .get<UnitOfMeasureModel[]>(baseUrl + "/api/InvUnitOfMeasure", {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + session?.user.access_token,
+        Authorization: "Bearer " + session,
       },
     })
     .then((response) => {

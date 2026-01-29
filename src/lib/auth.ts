@@ -1,6 +1,5 @@
 import NextAuth, { DefaultSession, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import type { Provider } from "next-auth/providers";
 import {
   authenticateUserFake,
   authenticateUser,
@@ -24,16 +23,24 @@ declare module "next-auth" {
        * you need to add them back into the newly declared interface.
        */
     } & DefaultSession["user"];
+    accessToken?: string;
+  }
+
+  interface User {
+    access_token: string;
   }
 }
 
-const providers: Provider[] = [
+const providers = [
   Credentials({
     credentials: {
       username: { label: "Username", type: "username" },
       password: { label: "Password", type: "password" },
     },
     async authorize(c) {
+      if (!c) {
+        throw new Error("Credentials are required.");
+      }
       const cred: UserCredential = {
         password: c.password,
         username: c.username,

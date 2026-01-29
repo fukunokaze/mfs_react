@@ -15,7 +15,6 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
     "serverless-next.js": "^1.15.0-alpha.2",
     "web-vitals": "^4.2.4"
@@ -23,7 +22,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve@latest ./build"
+    "start": "npx serve@latest ./build",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "eslintConfig": {
     "extends": [

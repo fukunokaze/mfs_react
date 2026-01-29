@@ -1,4 +1,3 @@
-import React from "react";
 import ReduxProvider from "../store/redux-provider";
 import "./globals.css";
 import Nav from '../components/nav';
@@ -9,18 +8,20 @@ export const metadata = {
   description: 'Mitrais Financial System',
 };
 
-export default async function RootLayout({ children }: Readonly<{
+export default async function RootLayout({ 
+  children 
+}: Readonly<{
   children: React.ReactNode
 }>) {
   const session = await auth();
+  
   return (
-
     <ReduxProvider>
       <html lang="en">
         <body>
           <div id="root">
             <div className="container mx-auto flex flex-row h-screen p-4">
-              <Nav isAuth={session != null}></Nav>
+              <Nav isAuth={session != null} />
               <div className="w-2/3 p-4 content">
                 {children}
               </div>

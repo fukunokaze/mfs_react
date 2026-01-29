@@ -3,8 +3,7 @@
 import Label from "../../components/Label";
 // import { signIn } from "@/auth";
 import { redirect } from "next/navigation"
-import { signIn } from "@/auth"
-import { AuthError } from "next-auth"
+import { signIn } from "@/lib/auth"
 
 let isError: boolean = false;
 

@@ -12,7 +12,6 @@ interface DatagridProps<T> {
 };
 
 function Datagrid<T>({ data, columns }: DatagridProps<T>) {
-    console.log(data);
     return (
         <table className="w-full border-collapse">
             <thead>

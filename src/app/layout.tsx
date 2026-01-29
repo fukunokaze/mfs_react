@@ -2,7 +2,7 @@ import React from "react";
 import ReduxProvider from "../store/redux-provider";
 import "./globals.css";
 import Nav from '../components/nav';
-import { auth } from "../auth"
+import { auth } from "../lib/auth"
 
 export const metadata = {
   title: 'MFS - Mitrais Financial System',

@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation'
 import { useAppSelector } from '../app/hooks';
 import React from "react";
-import { auth } from "../auth"
+import { auth } from "../lib/auth"
 
 export default async function Page() {
 

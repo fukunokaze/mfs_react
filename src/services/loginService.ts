@@ -11,9 +11,6 @@ interface AuthResponse {
 
 const authUserUrl: string = "http://localhost:5212/api/Login";
 
-export function test() {
-
-}
 export async function authenticateUser(cred: UserCredential): Promise<AuthResponse> {
     let userToken: string = "";
 

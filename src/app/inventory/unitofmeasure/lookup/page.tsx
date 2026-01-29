@@ -1,4 +1,3 @@
-
 import Datagrid, { Column } from "@/components/datagrid";
 import { LookupUOM } from "@/services/unitofmeasureservice";
 import UnitOfMeasureModel from "@/models/unitofmeasure";
@@ -7,11 +6,15 @@ import Link from "next/link";
 export default async function UOMLookup() {
 
     const columns: Column<UnitOfMeasureModel>[] = [
-        { key: "unitCode", header: "Unit Code" , render : (data) =>{
-            return(
-                <Link href={"http://localhost:3000/inventory/unitofmeasure/" + "" + data.uomId}>{data.uomName}</Link>
+        { 
+            key: "unitCode", 
+            header: "Unit Code", 
+            render: (data) => (
+                <Link href={`/inventory/unitofmeasure/${data.uomId}`}>
+                    {data.uomName}
+                </Link>
             )
-        }},
+        },
         { key: "uomCategory", header: "Category" },
         { key: "uomName", header: "Name" },
     ];
@@ -20,7 +23,7 @@ export default async function UOMLookup() {
 
     return (
         <div>
-            <Datagrid data={uomData} columns={columns}></Datagrid>
+            <Datagrid data={uomData} columns={columns} />
         </div>
     );
 }

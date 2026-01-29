@@ -1,16 +1,13 @@
-import UnitOfMeasureModel from '@/models/unitofmeasure';
-import React, { FormEvent } from 'react';
-import { CreateUOM, GetUom, UpdateUom } from "@/services/unitofmeasureservice"
+import { GetUom } from "@/services/unitofmeasureservice"
 import UomMaintainPage from "../maintain";
 
-interface BlogPostProps {
-    params: { slug: string };
+interface UnitOfMeasureProps {
+    params: Promise<{ slug: string }>;
 }
-export default async function UnitOfMeasure({ params }: BlogPostProps) {
-    let parameter = await params;
-    let uomData = await GetUom(parameter.slug as string);
+
+export default async function UnitOfMeasure({ params }: UnitOfMeasureProps) {
+    const parameter = await params;
+    const uomData = await GetUom(parameter.slug);
     
-    return (
-        <UomMaintainPage data={uomData}></UomMaintainPage>
-    );
+    return <UomMaintainPage data={uomData} />;
 }

@@ -1,7 +1,6 @@
 import NextAuth, { DefaultSession, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import {
-  authenticateUserFake,
   authenticateUser,
   UserCredential,
 } from "../services/loginService";

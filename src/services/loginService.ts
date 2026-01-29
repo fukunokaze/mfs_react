@@ -1,44 +1,40 @@
 import axios from "axios";
 
 export type UserCredential = {
-    username: string,
-    password: string,
+    username: string;
+    password: string;
 };
 
 interface AuthResponse {
-    token: string,
+    token: string;
 }
 
-const authUserUrl: string = "http://localhost:5212/api/Login";
+const authUserUrl: string = process.env.NEXT_PUBLIC_API_BASE_URL 
+    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/Login`
+    : "http://localhost:5212/api/Login";
 
+/**
+ * Authenticates a user with the backend API
+ * @param cred - User credentials containing username and password
+ * @returns Promise with authentication response containing token
+ * @throws Error if authentication fails
+ */
 export async function authenticateUser(cred: UserCredential): Promise<AuthResponse> {
-    let userToken: string = "";
-
-    await axios.post(authUserUrl, {
-        username: cred.username,
-        password: cred.password,
-    },
-        {
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-            }
-        }).then((response) => {
-
-            if (response.status == 200) {
-                userToken = response.data;
-                return {
-                    token: response.data,
-                }
-            }
+    try {
+        const response = await axios.post(authUserUrl, {
+            username: cred.username,
+            password: cred.password,
         });
 
-    return { token: userToken } as AuthResponse;
-};
-
-export const authenticateUserFake = (cred: UserCredential) => {
-    // const dispatch = useDispatch();
-    // dispatch(authAction.login());
-    return {
-        token: "asdasd123123",
+        if (response.status === 200 && response.data) {
+            return {
+                token: response.data,
+            };
+        }
+        
+        throw new Error("Authentication failed");
+    } catch (error) {
+        console.error("Authentication error:", error);
+        throw error;
     }
-};
+}

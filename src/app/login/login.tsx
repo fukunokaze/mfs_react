@@ -7,9 +7,9 @@ let isError: boolean = false;
 
 export function Login() {
   return (
-    <div id="logincontainer">
-      <div className="contentwrap">
-        <h1>
+    <div id="logincontainer" className="bg-[#DFDFE1] overflow-auto min-h-screen">
+      <div className="w-[583px] my-8 mx-auto bg-[#F2F2F2]">
+        <h1 className="m-0">
           <Image
             src="/assets/Images/00_login_page_top_mms.gif"
             alt="MMS Finance"
@@ -18,7 +18,7 @@ export function Login() {
             priority
           />
         </h1>
-        <div className="column">
+        <div className="float-left w-[280px]">
           <Image
             src="/assets/Images/00_login_page_globe.jpg"
             alt=""
@@ -27,7 +27,7 @@ export function Login() {
           />
         </div>
 
-        <div className="column">
+        <div className="float-left w-[280px]">
           <form
             action={async (formdata) => {
               "use server";
@@ -47,7 +47,7 @@ export function Login() {
             }}
           >
             Forgot your password? click here
-            <div className="information">
+            <div className="mt-6">
               <Label />
             </div>
             <p></p>
@@ -58,7 +58,7 @@ export function Login() {
                     <Label Text="Username" />
                   </td>
                   <td>
-                    <input name="username" id="username" type="text" />
+                    <input name="username" id="username" type="text" className="w-[120px] block float-left" />
                   </td>
                 </tr>
                 <tr>
@@ -66,7 +66,7 @@ export function Login() {
                     <Label Text="Password" />
                   </td>
                   <td>
-                    <input name="password" id="password" type="password" />
+                    <input name="password" id="password" type="password" className="w-[120px] block float-left" />
                   </td>
                 </tr>
                 <tr>
@@ -100,7 +100,7 @@ export function Login() {
             </table>
           </form>
         </div>
-        <div className="footer clear">{/* Copyright © 2009 Mitrais */}</div>
+        <div className="bg-[#DFDFE1] text-[10px] text-[#777777] pt-2 clear-both">{/* Copyright © 2009 Mitrais */}</div>
       </div>
     </div>
   );

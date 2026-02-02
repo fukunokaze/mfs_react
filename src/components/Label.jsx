@@ -2,7 +2,7 @@ import React from "react";
 
 function Label(props){
     return(
-        <span>{props.Text}</span>
+        <span className="w-[102px] block float-left">{props.Text}</span>
     );
 }
 

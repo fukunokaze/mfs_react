@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * IMPORTANT: Login page styles have been converted to Tailwind CSS inline classes.
+ * See: src/app/login/login.tsx and src/components/Label.jsx
+ * Legacy #logincontainer styles below are kept for backwards compatibility but are no longer actively used.
+ */
+
 html
 {
 	height: 100%;

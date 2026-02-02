@@ -6,6 +6,9 @@ import Image from "next/image";
 let isError: boolean = false;
 
 export function Login() {
+  // Note: This component maintains the original float-based layout from the legacy CSS
+  // to ensure pixel-perfect visual compatibility. Future refactors could modernize
+  // this to use Flexbox or Grid, but would require careful visual regression testing.
   return (
     <div id="logincontainer" className="bg-[#DFDFE1] overflow-auto min-h-screen">
       <div className="w-[583px] my-8 mx-auto bg-[#F2F2F2]">

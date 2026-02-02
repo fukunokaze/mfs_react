@@ -17,6 +17,8 @@ The login page has been fully converted from custom CSS classes to inline Tailwi
 - `.information` → `mt-6`
 - `.footer.clear` → `bg-[#DFDFE1] text-[10px] text-[#777777] pt-2 clear-both`
 
+**Note:** The login page maintains the original float-based layout to ensure pixel-perfect visual compatibility with the legacy design. While modern Flexbox or Grid layouts would be preferable, this conversion prioritizes maintaining the exact same visual appearance.
+
 #### Label Component (`src/components/Label.jsx`)
 Updated to use Tailwind classes for consistent layout within the login form:
 - Added: `w-[102px] block float-left`

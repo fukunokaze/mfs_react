@@ -7,9 +7,9 @@ let isError: boolean = false;
 
 export function Login() {
   return (
-    <div id="logincontainer">
-      <div className="contentwrap">
-        <h1>
+    <div id="logincontainer" style={{ backgroundColor: '#DFDFE1', overflow: 'auto', minHeight: '100vh' }}>
+      <div style={{ width: '583px', margin: '2rem auto', backgroundColor: '#F2F2F2' }}>
+        <h1 style={{ margin: 0 }}>
           <Image
             src="/assets/Images/00_login_page_top_mms.gif"
             alt="MMS Finance"
@@ -18,7 +18,7 @@ export function Login() {
             priority
           />
         </h1>
-        <div className="column">
+        <div className="float-start" style={{ width: '280px' }}>
           <Image
             src="/assets/Images/00_login_page_globe.jpg"
             alt=""
@@ -27,7 +27,7 @@ export function Login() {
           />
         </div>
 
-        <div className="column">
+        <div className="float-start" style={{ width: '280px' }}>
           <form
             action={async (formdata) => {
               "use server";
@@ -47,7 +47,7 @@ export function Login() {
             }}
           >
             Forgot your password? click here
-            <div className="information">
+            <div className="mt-4">
               <Label />
             </div>
             <p></p>
@@ -58,7 +58,7 @@ export function Login() {
                     <Label Text="Username" />
                   </td>
                   <td>
-                    <input name="username" id="username" type="text" />
+                    <input name="username" id="username" type="text" className="d-block float-start" style={{ width: '120px' }} />
                   </td>
                 </tr>
                 <tr>
@@ -66,7 +66,7 @@ export function Login() {
                     <Label Text="Password" />
                   </td>
                   <td>
-                    <input name="password" id="password" type="password" />
+                    <input name="password" id="password" type="password" className="d-block float-start" style={{ width: '120px' }} />
                   </td>
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@ export function Login() {
                 <tr>
                   <td></td>
                   <td>
-                    <button type="submit" className="w-[71px] h-[21px]">
+                    <button type="submit" style={{ width: '71px', height: '21px' }}>
                       <Image
                         src="/assets/Images/login.jpg"
                         width={71}
@@ -100,7 +100,7 @@ export function Login() {
             </table>
           </form>
         </div>
-        <div className="footer clear">{/* Copyright © 2009 Mitrais */}</div>
+        <div className="clearfix" style={{ backgroundColor: '#DFDFE1', fontSize: '10px', color: '#777777', paddingTop: '0.5rem' }}>{/* Copyright © 2009 Mitrais */}</div>
       </div>
     </div>
   );

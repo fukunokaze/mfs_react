@@ -7,7 +7,7 @@ A modern financial management system built with Next.js 16, React 19, and TypeSc
 - 🔐 **Authentication** - NextAuth-based credential authentication
 - 📊 **Dashboard** - Financial overview and management
 - 📦 **Inventory Management** - Unit of measure tracking
-- 🎨 **Modern UI** - TailwindCSS with responsive design
+- 🎨 **Modern UI** - Bootstrap 5 with responsive design
 - 🔒 **Type Safety** - Full TypeScript support
 - 🚀 **Performance** - Next.js App Router with Server Components
 
@@ -15,7 +15,7 @@ A modern financial management system built with Next.js 16, React 19, and TypeSc
 
 - **Framework**: Next.js 16.1.6
 - **UI Library**: React 19.2.4
-- **Styling**: TailwindCSS 4.1.11
+- **Styling**: Bootstrap 5.3.x
 - **Authentication**: NextAuth 5.0.0-beta.30
 - **State Management**: Redux Toolkit 2.11.2
 - **API Client**: Axios 1.11.0, Apollo Client 3.14.0

@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* 
+ * IMPORTANT: Application now uses Bootstrap for styling.
+ * Custom styles below supplement Bootstrap classes.
+ */
 
 html
 {

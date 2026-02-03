@@ -17,8 +17,8 @@ const MasterWithNav: React.FC<MasterContainerProp> = (master) => {
     const data: number[] = [1, 2, 3];
 
     return (
-        <div className="w-1/3 p-4 border-r border-gray-300">
-            <div className="w-2/3 p-4">
+        <div className="border-end p-3" style={{ width: '33.333%' }}>
+            <div className="p-3" style={{ width: '66.667%' }}>
                 {master.children}
             </div>
         </div>

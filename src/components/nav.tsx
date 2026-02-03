@@ -25,20 +25,20 @@ const Nav: React.FC<NavProp> = ({ isAuth }) => {
     }
 
     return (
-        <nav className="w-1/3 p-4 border-r border-gray-300">
-            <h2 className="text-lg font-semibold mb-2">Navigation</h2>
+        <nav className="border-end p-3" style={{ width: '33.333%' }}>
+            <h2 className="h5 fw-semibold mb-2">Navigation</h2>
             {navItems.map((item, index) => (
                 <div key={index} className="py-2">
                     <button
-                        className="w-full text-left py-2 px-4 bg-gray-100 hover:bg-gray-200 rounded-lg focus:outline-none transition-colors"
+                        className="btn btn-light w-100 text-start"
                         onClick={() => toggleAccordion(index)}
                         aria-expanded={activeIndex === index}
                     >
                         {item.name}
                     </button>
                     {activeIndex === index && (
-                        <div className="p-4 border-l-4 border-blue-500 bg-gray-50 mt-1 rounded-lg">
-                            <Link href="/test" className="hover:underline">
+                        <div className="p-3 border-start border-primary border-4 bg-light mt-1 rounded">
+                            <Link href="/test" className="text-decoration-none">
                                 Test Page
                             </Link>
                         </div>
@@ -48,19 +48,19 @@ const Nav: React.FC<NavProp> = ({ isAuth }) => {
             
             <div className="py-2">
                 <button
-                    className="w-full text-left py-2 px-4 bg-gray-100 hover:bg-gray-200 rounded-lg focus:outline-none transition-colors"
+                    className="btn btn-light w-100 text-start"
                     onClick={() => toggleAccordion(4)}
                     aria-expanded={activeIndex === 4}
                 >
                     Inventory
                 </button>
                 {activeIndex === 4 && (
-                    <div className="p-4 border-l-4 border-blue-500 bg-gray-50 mt-1 rounded-lg">
-                        <Link href="/inventory/unitofmeasure" className="hover:underline">
+                    <div className="p-3 border-start border-primary border-4 bg-light mt-1 rounded">
+                        <Link href="/inventory/unitofmeasure" className="text-decoration-none">
                             Unit Of Measure
                         </Link>
-                        <div className="ml-4 mt-2 border-l border-gray-600 pl-2">
-                            <Link href="/inventory/unitofmeasure/lookup" className="hover:underline">
+                        <div className="ms-3 mt-2 border-start ps-2">
+                            <Link href="/inventory/unitofmeasure/lookup" className="text-decoration-none">
                                 Lookup
                             </Link>
                         </div>
@@ -68,10 +68,10 @@ const Nav: React.FC<NavProp> = ({ isAuth }) => {
                 )}
             </div>
             
-            <div className="py-2 mt-4 pt-4 border-t border-gray-300">
+            <div className="py-2 mt-4 pt-4 border-top">
                 <Link 
                     href="/logout" 
-                    className="block w-full text-left py-2 px-4 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition-colors"
+                    className="btn btn-outline-danger w-100 text-start"
                 >
                     Logout
                 </Link>

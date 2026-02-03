@@ -1,5 +1,5 @@
 /* Import Bootstrap CSS */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* 
  * IMPORTANT: Application now uses Bootstrap for styling.

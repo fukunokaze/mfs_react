@@ -20,9 +20,9 @@ export default async function RootLayout({
       <html lang="en">
         <body>
           <div id="root">
-            <div className="container mx-auto flex flex-row h-screen p-4">
+            <div className="container-fluid d-flex flex-row vh-100 p-3">
               <Nav isAuth={session != null} />
-              <div className="w-2/3 p-4 content">
+              <div className="p-3 content" style={{ width: '66.667%' }}>
                 {children}
               </div>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 function Label(props){
     return(
-        <span className="w-[102px] block float-left">{props.Text}</span>
+        <span className="d-block float-start" style={{ width: '102px' }}>{props.Text}</span>
     );
 }
 

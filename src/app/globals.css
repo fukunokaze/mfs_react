@@ -1,11 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Bootstrap CSS */
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* 
- * IMPORTANT: Login page styles have been converted to Tailwind CSS inline classes.
- * See: src/app/login/login.tsx and src/components/Label.jsx
- * Legacy #logincontainer styles below are kept for backwards compatibility but are no longer actively used.
+ * IMPORTANT: Application now uses Bootstrap for styling.
+ * Custom styles below supplement Bootstrap classes.
  */
 
 html

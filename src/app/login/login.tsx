@@ -6,13 +6,10 @@ import Image from "next/image";
 let isError: boolean = false;
 
 export function Login() {
-  // Note: This component maintains the original float-based layout from the legacy CSS
-  // to ensure pixel-perfect visual compatibility. Future refactors could modernize
-  // this to use Flexbox or Grid, but would require careful visual regression testing.
   return (
-    <div id="logincontainer" className="bg-[#DFDFE1] overflow-auto min-h-screen">
-      <div className="w-[583px] my-8 mx-auto bg-[#F2F2F2]">
-        <h1 className="m-0">
+    <div id="logincontainer" style={{ backgroundColor: '#DFDFE1', overflow: 'auto', minHeight: '100vh' }}>
+      <div style={{ width: '583px', margin: '2rem auto', backgroundColor: '#F2F2F2' }}>
+        <h1 style={{ margin: 0 }}>
           <Image
             src="/assets/Images/00_login_page_top_mms.gif"
             alt="MMS Finance"
@@ -21,7 +18,7 @@ export function Login() {
             priority
           />
         </h1>
-        <div className="float-left w-[280px]">
+        <div className="float-start" style={{ width: '280px' }}>
           <Image
             src="/assets/Images/00_login_page_globe.jpg"
             alt=""
@@ -30,7 +27,7 @@ export function Login() {
           />
         </div>
 
-        <div className="float-left w-[280px]">
+        <div className="float-start" style={{ width: '280px' }}>
           <form
             action={async (formdata) => {
               "use server";
@@ -50,7 +47,7 @@ export function Login() {
             }}
           >
             Forgot your password? click here
-            <div className="mt-6">
+            <div className="mt-4">
               <Label />
             </div>
             <p></p>
@@ -61,7 +58,7 @@ export function Login() {
                     <Label Text="Username" />
                   </td>
                   <td>
-                    <input name="username" id="username" type="text" className="w-[120px] block float-left" />
+                    <input name="username" id="username" type="text" className="d-block float-start" style={{ width: '120px' }} />
                   </td>
                 </tr>
                 <tr>
@@ -69,7 +66,7 @@ export function Login() {
                     <Label Text="Password" />
                   </td>
                   <td>
-                    <input name="password" id="password" type="password" className="w-[120px] block float-left" />
+                    <input name="password" id="password" type="password" className="d-block float-start" style={{ width: '120px' }} />
                   </td>
                 </tr>
                 <tr>
@@ -83,7 +80,7 @@ export function Login() {
                 <tr>
                   <td></td>
                   <td>
-                    <button type="submit" className="w-[71px] h-[21px]">
+                    <button type="submit" style={{ width: '71px', height: '21px' }}>
                       <Image
                         src="/assets/Images/login.jpg"
                         width={71}
@@ -103,7 +100,7 @@ export function Login() {
             </table>
           </form>
         </div>
-        <div className="bg-[#DFDFE1] text-[10px] text-[#777777] pt-2 clear-both">{/* Copyright © 2009 Mitrais */}</div>
+        <div className="clearfix" style={{ backgroundColor: '#DFDFE1', fontSize: '10px', color: '#777777', paddingTop: '0.5rem' }}>{/* Copyright © 2009 Mitrais */}</div>
       </div>
     </div>
   );

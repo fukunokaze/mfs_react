@@ -13,11 +13,11 @@ interface DatagridProps<T> {
 
 function Datagrid<T>({ data, columns }: DatagridProps<T>) {
     return (
-        <table className="w-full border-collapse">
+        <table className="table table-bordered">
             <thead>
                 <tr>
                     {columns.map((col) => (
-                        <th key={String(col.key)} className="border p-2">
+                        <th key={String(col.key)}>
                             {col.header}
                         </th>
                     ))}
@@ -27,7 +27,7 @@ function Datagrid<T>({ data, columns }: DatagridProps<T>) {
                 {data.map((row, idx) => (
                     <tr key={idx}>
                         {columns.map((col) => (
-                            <td id={String(col.key)} key={String(col.key)} className="border p-2">
+                            <td id={String(col.key)} key={String(col.key)}>
                                 {col.render ? col.render(row) : (row as any)[col.key]}
                             </td>
                         ))}

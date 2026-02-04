@@ -21,7 +21,7 @@ function DropDownField(props: DropDownFieldProps) {
           defaultValue={props.defaultValue}
         >
           {props.values?.map((option) => (
-            <option  key={option.value} value={option.value}>
+            <option key={option.value} value={option.value}>
               {option.text}
             </option>
           ))}

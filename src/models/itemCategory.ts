@@ -1,11 +1,12 @@
 interface ItemCategoryModel {
   itemCategoryId: string;
-  itemCategoryCode: string;
+  code: string;
   categoryGroup: string;
-  itemCategoryName: string;
-  itemCategoryDescription: string;
+  name: string;
+  description: string;
   status: string;
-  itemCategoryaParent: string;
+  parent: string;
+  parentCode: string;
 }
 
 export default ItemCategoryModel;

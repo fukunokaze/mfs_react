@@ -1,20 +1,20 @@
 import ReduxProvider from "../store/redux-provider";
 import "./globals.css";
-import Nav from '../components/nav';
-import { auth } from "../lib/auth"
+import Nav from "../components/nav";
+import { auth } from "../lib/auth";
 
 export const metadata = {
-  title: 'MFS - Mitrais Financial System',
-  description: 'Mitrais Financial System',
+  title: "MFS - Mitrais Financial System",
+  description: "Mitrais Financial System",
 };
 
-export default async function RootLayout({ 
-  children 
+export default async function RootLayout({
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   const session = await auth();
-  
+
   return (
     <ReduxProvider>
       <html lang="en">
@@ -22,7 +22,7 @@ export default async function RootLayout({
           <div id="root">
             <div className="container-fluid d-flex flex-row vh-100 p-3">
               <Nav isAuth={session != null} />
-              <div className="p-3 content" style={{ width: '80%' }}>
+              <div className="p-3 content" style={{ width: "100%" }}>
                 {children}
               </div>
             </div>
@@ -30,5 +30,5 @@ export default async function RootLayout({
         </body>
       </html>
     </ReduxProvider>
-  )
+  );
 }

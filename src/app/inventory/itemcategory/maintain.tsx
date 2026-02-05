@@ -1,21 +1,19 @@
 "use client";
-import { CreateUOM, UpdateUom } from "@/services/unitofmeasureservice";
-import React, { FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 import ItemCategoryModel from "@/models/itemCategory";
 import TextBoxField from "@/components/textboxtfield";
 import TextAreaField from "@/components/textareafield";
 import DropDownField from "@/components/dropdownfield";
 import { ItemCategoryStatus } from "@/enums/itemcategorystatus";
 
-export default function ItemCategoryMaintainPage(props: { data: ItemCategoryModel }) {
-  const router = useRouter();
-
+export default function ItemCategoryMaintainPage(props: {
+  data: ItemCategoryModel;
+}) {
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-let initialData: ItemCategoryModel = {
+    let initialData: ItemCategoryModel = {
       itemCategoryId: "",
       code: formData.get("ItemCategoryCode")?.toString() ?? "",
       name: formData.get("ItemCategoryName")?.toString() ?? "",

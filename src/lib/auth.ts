@@ -1,9 +1,6 @@
 import NextAuth, { DefaultSession, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import {
-  authenticateUser,
-  UserCredential,
-} from "../services/loginService";
+import { authenticateUser, UserCredential } from "../services/loginService";
 
 declare module "next-auth" {
   /**
@@ -76,8 +73,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.id = token.id as string;
         session.user.access_token = token.access_token as string;
       }
-      session.accessToken = (token.access_token as string | undefined) ?? undefined;
+      session.accessToken =
+        (token.access_token as string | undefined) ?? undefined;
       return session;
+    },
+    async authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      const isOnLoginPage = nextUrl.pathname.startsWith("/login");
+
+      if (!isLoggedIn && !isOnLoginPage) {
+        return false; // Redirect to login page
+      }
+
+      if (isLoggedIn && isOnLoginPage) {
+        return Response.redirect(new URL("/", nextUrl)); // or wherever you want to redirect after login
+      }
+
+      return true;
     },
   },
   pages: {

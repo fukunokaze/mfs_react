@@ -835,11 +835,21 @@ ul.menu .topline
 	margin: 32px auto;
 	background: #F2F2F2;
 }
+
+#logincontainer .contentwrap h1
+{
+	width: 583px;
+	height: 99px;
+	position: relative;
+}
+
 #logincontainer .column
 {
 	float: left;
 	width: 280px;
 }
+
+
 #logincontainer .footer
 {
 	background: #DFDFE1;

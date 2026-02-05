@@ -1,0 +1,32 @@
+interface TextBoxFieldProps {
+  label: string;
+  defaultValue: string;
+  elementId?: string;
+  elementName?: string;
+  placeholder?: string;
+  hidden?: boolean;
+  disabled?: boolean;
+}
+
+function TextBoxField(props: TextBoxFieldProps) {
+  return (
+    <div className="mb-3 row align-items-center" hidden={props.hidden}>
+      <label className="col-4 text-start pe-3" htmlFor={props.elementId}>
+        {props.label}:
+      </label>
+      <div className="col-8">
+        <input
+          type="text"
+          id={props.elementId}
+          name={props.elementName}
+          defaultValue={props.defaultValue}
+          disabled={props.disabled}
+          placeholder={props.placeholder}
+          className="form-control"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default TextBoxField;

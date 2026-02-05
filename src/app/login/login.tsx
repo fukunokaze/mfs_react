@@ -7,27 +7,34 @@ let isError: boolean = false;
 
 export function Login() {
   return (
-    <div id="logincontainer" style={{ backgroundColor: '#DFDFE1', overflow: 'auto', minHeight: '100vh' }}>
-      <div style={{ width: '583px', margin: '2rem auto', backgroundColor: '#F2F2F2' }}>
-        <h1 style={{ margin: 0 }}>
+    <div
+      id="logincontainer"
+      style={{
+        backgroundColor: "#DFDFE1",
+        overflow: "auto",
+        minHeight: "100vh",
+      }}
+    >
+      <div className="contentwrap container p-0">
+        <h1 className="row g-0">
           <Image
             src="/assets/Images/00_login_page_top_mms.gif"
             alt="MMS Finance"
-            width={200}
-            height={60}
-            priority
+            fill
+            sizes="(max-width: 768px) 100vw, 583px"
+            unoptimized
           />
         </h1>
-        <div className="float-start" style={{ width: '280px' }}>
+        <div className="column">
           <Image
             src="/assets/Images/00_login_page_globe.jpg"
             alt=""
-            width={300}
-            height={300}
+            width={216}
+            height={160}
           />
         </div>
 
-        <div className="float-start" style={{ width: '280px' }}>
+        <div className="float-start" style={{ width: "280px" }}>
           <form
             action={async (formdata) => {
               "use server";
@@ -58,7 +65,13 @@ export function Login() {
                     <Label Text="Username" />
                   </td>
                   <td>
-                    <input name="username" id="username" type="text" className="d-block float-start" style={{ width: '120px' }} />
+                    <input
+                      name="username"
+                      id="username"
+                      type="text"
+                      className="d-block float-start"
+                      style={{ width: "120px" }}
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -66,7 +79,13 @@ export function Login() {
                     <Label Text="Password" />
                   </td>
                   <td>
-                    <input name="password" id="password" type="password" className="d-block float-start" style={{ width: '120px' }} />
+                    <input
+                      name="password"
+                      id="password"
+                      type="password"
+                      className="d-block float-start"
+                      style={{ width: "120px" }}
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -80,13 +99,11 @@ export function Login() {
                 <tr>
                   <td></td>
                   <td>
-                    <button type="submit" style={{ width: '71px', height: '21px' }}>
-                      <Image
-                        src="/assets/Images/login.jpg"
-                        width={71}
-                        height={21}
-                        alt="login"
-                      />
+                    <button
+                      type="submit"
+                    >
+                      <img src="/assets/Images/login.jpg" alt="login"/>
+                      
                     </button>
                   </td>
                 </tr>
@@ -100,7 +117,17 @@ export function Login() {
             </table>
           </form>
         </div>
-        <div className="clearfix" style={{ backgroundColor: '#DFDFE1', fontSize: '10px', color: '#777777', paddingTop: '0.5rem' }}>{/* Copyright © 2009 Mitrais */}</div>
+        <div
+          className="clearfix"
+          style={{
+            backgroundColor: "#DFDFE1",
+            fontSize: "10px",
+            color: "#777777",
+            paddingTop: "0.5rem",
+          }}
+        >
+          {/* Copyright © 2009 Mitrais */}
+        </div>
       </div>
     </div>
   );

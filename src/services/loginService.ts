@@ -1,12 +1,14 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export type UserCredential = {
     username: string;
     password: string;
 };
 
-interface AuthResponse {
+export type AuthResponse = {
     token: string;
+    status?: number;
+    message?: string;
 }
 
 const authUserUrl: string = process.env.NEXT_PUBLIC_API_BASE_URL 
@@ -26,15 +28,25 @@ export async function authenticateUser(cred: UserCredential): Promise<AuthRespon
             password: cred.password,
         });
 
-        if (response.status === 200 && response.data) {
+        if (response.status === 200 && response.data.token) {
             return {
-                token: response.data,
+                token: response.data.token,
+                status: response.status,
+                message: response.data.message
             };
         }
         
-        throw new Error("Authentication failed");
-    } catch (error) {
-        console.error("Authentication error:", error);
-        throw error;
+        return {
+            token: "",
+            status: response.status,
+            message: response.data.message
+        }
+    } catch (error : AxiosError<AuthResponse> | any) {
+        // console.error("Authentication error:", error);
+        return {
+            token: "",
+            status: error.response?.status,
+            message: error.response.data.message
+        }
     }
 }

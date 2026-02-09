@@ -1,11 +1,22 @@
+"use client";
+
 import Label from "../../components/Label";
-import { redirect } from "next/navigation";
-import { signIn } from "../../lib/auth";
 import Image from "next/image";
+import { useFormState } from "react-dom";
+import { handleLogin } from "./actions";
 
 let isError: boolean = false;
 
 export function Login() {
+  const [state, formAction] = useFormState(handleLogin, void {});
+
+  // If login is successful, redirect
+  if (state?.error) {
+    isError = true;
+  } else {
+    isError = false;
+  }
+
   return (
     <div
       id="logincontainer"
@@ -35,27 +46,10 @@ export function Login() {
         </div>
 
         <div className="float-start" style={{ width: "280px" }}>
-          <form
-            action={async (formdata) => {
-              "use server";
-              let id: boolean = false;
-              try {
-                const respo = await signIn("credentials", {
-                  username: formdata.get("username"),
-                  password: formdata.get("password"),
-                  redirect: false,
-                });
-              } catch (error) {
-                console.error("Login error:", error);
-                redirect("/error");
-              } finally {
-                redirect("/");
-              }
-            }}
-          >
+          <form action={formAction}>
             Forgot your password? click here
-            <div className="mt-4">
-              <Label />
+            <div className="mt-4" style={{ color: "red" }}>
+              <span>{state?.error || ""}</span>
             </div>
             <p></p>
             <table cellSpacing="0.5px">
@@ -99,20 +93,11 @@ export function Login() {
                 <tr>
                   <td></td>
                   <td>
-                    <button
-                      type="submit"
-                    >
-                      <img src="/assets/Images/login.jpg" alt="login"/>
-                      
+                    <button type="submit">
+                      <img src="/assets/Images/login.jpg" alt="login" />
                     </button>
                   </td>
                 </tr>
-                {isError && (
-                  <tr>
-                    <td></td>
-                    <td>Invalid Credential</td>
-                  </tr>
-                )}
               </tbody>
             </table>
           </form>

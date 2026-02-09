@@ -41,14 +41,32 @@ const providers = [
         password: c.password,
         username: c.username,
       } as UserCredential;
-      let response = await authenticateUser(cred);
-      if (response.token == "") throw new Error("Invalid credentials.");
-      return {
-        id: "test",
-        name: "Test User",
-        email: "test@example.com",
-        access_token: response.token,
-      };
+
+      try {
+        const response = await authenticateUser(cred);
+
+        // Check if the backend returned an error
+        if (!response.status || response.status !== 200) {
+          // IMPORTANT: In Auth.js v5, throwing an error here
+          // sends the user to the error page with ?error=CallbackRouteError
+          // You can throw a string or a custom AuthError
+          throw new Error(response.message || "INVALID_CREDENTIALS");
+        }
+
+        // Return the user object if authentication is successful
+        return {
+          id: "test-id", // Ensure you have a string ID
+          name: "Test User",
+          email: "test@example.com",
+          access_token: response.token,
+        };
+      } catch (error) {
+        // Catch network errors or the error thrown above
+        if (error instanceof Error) {
+          throw error;
+        }
+        return null;
+      }
     },
   }),
 ];
@@ -57,6 +75,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers,
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60, // 1 hour
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -98,13 +117,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   debug: true,
   logger: {
     error(code, ...message) {
-      console.log(code, message);
+      // console.log(code, message);
     },
     warn(code, ...message) {
-      console.log(code, message);
+      // console.log(code, message);
     },
     debug(code, ...message) {
-      console.log(code, message);
+      // console.log(code, message);
     },
   },
 });

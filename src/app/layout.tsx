@@ -21,7 +21,7 @@ export default async function RootLayout({
         <body>
           <div id="root">
             <div className="container-fluid d-flex flex-row vh-100 p-3">
-              <Nav isAuth={session != null} />
+              <Nav isAuth={session?.accessToken != null} />
               <div className="p-3 content" style={{ width: "100%" }}>
                 {children}
               </div>

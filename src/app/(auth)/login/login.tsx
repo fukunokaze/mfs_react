@@ -1,6 +1,6 @@
 "use client";
 
-import Label from "../../components/Label";
+import Label from "../../../components/Label";
 import Image from "next/image";
 import { useFormState } from "react-dom";
 import { handleLogin } from "./actions";
@@ -28,21 +28,21 @@ export function Login() {
     >
       <div className="contentwrap container p-0">
         <h1 className="row g-0">
-          <Image
+          {/* <Image
             src="/assets/Images/00_login_page_top_mms.gif"
             alt="MMS Finance"
             fill
             sizes="(max-width: 768px) 100vw, 583px"
             unoptimized
-          />
+          /> */}
         </h1>
         <div className="column">
-          <Image
+          {/* <Image
             src="/assets/Images/00_login_page_globe.jpg"
             alt=""
             width={216}
             height={160}
-          />
+          /> */}
         </div>
 
         <div className="float-start" style={{ width: "280px" }}>

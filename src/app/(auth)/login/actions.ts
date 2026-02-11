@@ -1,6 +1,6 @@
 "use server";
-import { signIn } from "../../lib/auth";
-import { auth } from "../../lib/auth";
+import { signIn } from "../../../lib/auth";
+import { auth } from "../../../lib/auth";
 import { AuthResponse } from "@/services/loginService";
 import { redirect } from "next/navigation";
 

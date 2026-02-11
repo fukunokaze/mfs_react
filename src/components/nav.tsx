@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import React from "react";
+import { useNav } from "../contexts/navcontext";
+import { usePathname } from "next/navigation";
 
-interface NavProp {
-  isAuth: boolean;
-}
+interface NavProp {}
 
-const Nav: React.FC<NavProp> = ({ isAuth }) => {
+const Nav: React.FC<NavProp> = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
+  const isShow = useNav().isVisible;
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -21,7 +21,11 @@ const Nav: React.FC<NavProp> = ({ isAuth }) => {
     { name: "Supplier", items: [] },
   ];
 
-  if (!isAuth) {
+  const pathname = usePathname();
+  // Hide if the path matches your lookup page
+  if (pathname.includes("/itemcategory/lookup")) return null;
+
+  if (!isShow) {
     return null;
   }
 

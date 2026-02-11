@@ -1,14 +1,27 @@
 "use client";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import ItemCategoryModel from "@/models/itemCategory";
 import TextBoxField from "@/components/textboxtfield";
 import TextAreaField from "@/components/textareafield";
 import DropDownField from "@/components/dropdownfield";
 import { ItemCategoryStatus } from "@/enums/itemcategorystatus";
+import { useState } from "react";
+import Link from "next/link";
+
+declare global {
+  interface Window {
+    receiveItemCategoryData?: (itemCategory: ItemCategoryModel) => void;
+  }
+}
 
 export default function ItemCategoryMaintainPage(props: {
   data: ItemCategoryModel;
 }) {
+  const [formData, setFormData] = useState<ItemCategoryModel>(props.data);
+  const [selectedItemCategory, setSelectedItemCategory] =
+    useState<ItemCategoryModel | null>(null);
+
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -24,6 +37,34 @@ export default function ItemCategoryMaintainPage(props: {
       categoryGroup: "",
     };
   }
+
+  // 1. Setup the "Callback" Listener
+  useEffect(() => {
+    // We attach the function to the window so the child can find it
+    window.receiveItemCategoryData = (itemCategory: ItemCategoryModel) => {
+      setSelectedItemCategory(itemCategory);
+    };
+
+    // Cleanup: Remove the function when this component unmounts
+    return () => {
+      delete window.receiveItemCategoryData;
+    };
+  }, []);
+
+  const openLookupWindow = () => {
+    // 2. Open the popup
+    // 'width=600,height=600' forces it to open as a pop-out, not a new tab
+    const popup = window.open(
+      "itemcategory/lookup", // This must match a real route in your app
+      "ItemCategoryLookup",
+      "width=600,height=500,left=200,top=200",
+    );
+
+    if (!popup) {
+      alert("Please allow popups for this website");
+    }
+  };
+
 
   return (
     <div>
@@ -67,14 +108,24 @@ export default function ItemCategoryMaintainPage(props: {
             elementId="ParentCode"
             elementName="ParentCode"
             placeholder="Parent Category Code"
+            disabled={true}
             defaultValue={props.data.parentCode}
+            value={selectedItemCategory?.code ?? ""}
+            loookupEvent={openLookupWindow}
           />
+          {/* <Link
+            href="#"
+            onClick={openLookupWindow}
+          >
+            Lookup
+          </Link> */}
           <TextBoxField
             label="Parent"
             elementId="parentId"
             elementName="parentId"
             hidden={true}
             defaultValue={props.data.parent}
+            value={selectedItemCategory?.code ?? ""}
           />
 
           <div className="text-center">
